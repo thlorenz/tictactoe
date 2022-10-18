@@ -33,9 +33,24 @@ functions against that program after it is deployed on a local validator via _am
 cd program && cargo build-bpf
 ```
 
+### Running SDK Tests
+
+```sh
+cd ts && yarn test
+```
+
 ## Steps
 
+**NOTE**: 
+
+Each step/pull-request is tagged and thus you can check them out via:
+
+`git switch <step> -c pr/<step>`.
+
+For example to checkout step **2** you'd do: `git switch 2 -c pr/2`.
+
 1. [adding solana rust program with processor method stubs](https://github.com/thlorenz/tictactoe/pull/1)
+2. [setup SDK package](https://github.com/thlorenz/tictactoe/pull/2)
 
 ## Resources
 
