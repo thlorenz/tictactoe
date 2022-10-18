@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "pretest": "yarn build",
-    "test": "tape dist/test/*.js"
+    "test": "tape dist/test/*.js",
+    "t": "esr ./test/tictactoe.ts | tap-spec"
   },
   "dependencies": {
     "@metaplex-foundation/beet": "^0.7.1",
