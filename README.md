@@ -8,7 +8,7 @@ It is built using the _MetaStack_ consisting of the following tools:
 - [shank](https://github.com/metaplex-foundation/shank) which extracts IDL data from the Rust
   program
 - [solita](https://github.com/metaplex-foundation/solita) which generates a TypeScript SDK from
-  the extrated IDL
+  the extracted IDL
 - [amman](https://github.com/metaplex-foundation/amman) which allows debugging and testing the
   program on a local validator
 
@@ -32,6 +32,11 @@ functions against that program after it is deployed on a local validator via _am
 ```sh
 cd program && cargo build-bpf
 ```
+### Generating SDK
+
+```sh
+cd ts && yarn api:gen
+```
 
 ### Running SDK Tests
 
@@ -51,11 +56,11 @@ For example to checkout step **2** you'd do: `git switch 2 -c pr/2`.
 
 1. [adding solana rust program with processor method stubs](https://github.com/thlorenz/tictactoe/pull/1)
 2. [setup SDK package](https://github.com/thlorenz/tictactoe/pull/2)
+3. [preparing SDK generation](https://github.com/thlorenz/tictactoe/pull/3)
 
 ## Resources
 
-- [Figma
-  Board](https://www.figma.com/file/mjzOnSoQ6cOlmRhCLFYgxn/Shank%2FSolita%2FAmman-Solana-Development-Toolbelt)
+- [Figma Board](https://www.figma.com/file/mjzOnSoQ6cOlmRhCLFYgxn/Shank%2FSolita%2FAmman-Solana-Development-Toolbelt)
   used to explain the _MetaStack_.
 
 ## LICENSE
