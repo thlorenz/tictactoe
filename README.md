@@ -32,6 +32,13 @@ functions against that program after it is deployed on a local validator via _am
 ```sh
 cd program && cargo build-bpf
 ```
+
+### Installing SDK Dependencies
+
+```sh
+cd ts && yarn install 
+```
+
 ### Generating SDK
 
 ```sh
@@ -57,6 +64,7 @@ For example to checkout step **2** you'd do: `git switch 2 -c pr/2`.
 1. [adding solana rust program with processor method stubs](https://github.com/thlorenz/tictactoe/pull/1)
 2. [setup SDK package](https://github.com/thlorenz/tictactoe/pull/2)
 3. [preparing SDK generation](https://github.com/thlorenz/tictactoe/pull/3)
+4. [generating IDL and TypeScript SDK](https://github.com/thlorenz/tictactoe/pull/4)
 
 ## Resources
 
