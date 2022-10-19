@@ -1,0 +1,90 @@
+{
+  "version": "0.1.0",
+  "name": "tictactoe",
+  "instructions": [
+    {
+      "name": "InitializeGame",
+      "accounts": [
+        {
+          "name": "playerX",
+          "isMut": false,
+          "isSigner": true,
+          "desc": "The player initializing the game"
+        },
+        {
+          "name": "gamePda",
+          "isMut": true,
+          "isSigner": false,
+          "desc": "The game PDA"
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "desc": "The system program"
+        }
+      ],
+      "args": [],
+      "discriminant": {
+        "type": "u8",
+        "value": 0
+      }
+    },
+    {
+      "name": "PlayerJoin",
+      "accounts": [],
+      "args": [],
+      "discriminant": {
+        "type": "u8",
+        "value": 1
+      }
+    },
+    {
+      "name": "PlayerMove",
+      "accounts": [],
+      "args": [
+        {
+          "name": "playerMove",
+          "type": {
+            "defined": "PlayerMove"
+          }
+        }
+      ],
+      "discriminant": {
+        "type": "u8",
+        "value": 2
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "PlayerMove",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "xOrO",
+            "type": "u8"
+          },
+          {
+            "name": "field",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 7456684,
+      "name": "Unauthorized",
+      "msg": "You are not authorized to perform this action."
+    }
+  ],
+  "metadata": {
+    "origin": "shank",
+    "address": "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS",
+    "binaryVersion": "0.0.10",
+    "libVersion": "0.0.10"
+  }
+}
