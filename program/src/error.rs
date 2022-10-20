@@ -10,6 +10,15 @@ use thiserror::Error;
 pub enum TictactoeError {
     #[error("You are not authorized to perform this action.")]
     Unauthorized = 0x71c7ac,
+
+    #[error("Account should be signer")]
+    AccountShouldBeSigner,
+
+    #[error("Payer does not have sufficient lamports to fund the operation")]
+    InsufficientFunds,
+
+    #[error("Game account specified is invalid.")]
+    InvalidGameAccount,
 }
 
 // -----------------

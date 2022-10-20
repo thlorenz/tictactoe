@@ -32,6 +32,75 @@ createErrorFromCodeLookup.set(0x71c7ac, () => new UnauthorizedError())
 createErrorFromNameLookup.set('Unauthorized', () => new UnauthorizedError())
 
 /**
+ * AccountShouldBeSigner: 'Account should be signer'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class AccountShouldBeSignerError extends Error {
+  readonly code: number = 0x71c7ad
+  readonly name: string = 'AccountShouldBeSigner'
+  constructor() {
+    super('Account should be signer')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, AccountShouldBeSignerError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(0x71c7ad, () => new AccountShouldBeSignerError())
+createErrorFromNameLookup.set(
+  'AccountShouldBeSigner',
+  () => new AccountShouldBeSignerError()
+)
+
+/**
+ * InsufficientFunds: 'Payer does not have sufficient lamports to fund the operation'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class InsufficientFundsError extends Error {
+  readonly code: number = 0x71c7ae
+  readonly name: string = 'InsufficientFunds'
+  constructor() {
+    super('Payer does not have sufficient lamports to fund the operation')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, InsufficientFundsError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(0x71c7ae, () => new InsufficientFundsError())
+createErrorFromNameLookup.set(
+  'InsufficientFunds',
+  () => new InsufficientFundsError()
+)
+
+/**
+ * InvalidGameAccount: 'Game account specified is invalid.'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class InvalidGameAccountError extends Error {
+  readonly code: number = 0x71c7af
+  readonly name: string = 'InvalidGameAccount'
+  constructor() {
+    super('Game account specified is invalid.')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, InvalidGameAccountError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(0x71c7af, () => new InvalidGameAccountError())
+createErrorFromNameLookup.set(
+  'InvalidGameAccount',
+  () => new InvalidGameAccountError()
+)
+
+/**
  * Attempts to resolve a custom program error from the provided error code.
  * @category Errors
  * @category generated
