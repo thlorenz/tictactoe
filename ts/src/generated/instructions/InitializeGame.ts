@@ -7,15 +7,35 @@
 
 import * as beet from '@metaplex-foundation/beet'
 import * as web3 from '@solana/web3.js'
+import {
+  InitializeGameArgs,
+  initializeGameArgsBeet,
+} from '../types/InitializeGameArgs'
 
 /**
  * @category Instructions
  * @category InitializeGame
  * @category generated
  */
-export const InitializeGameStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number
-}>([['instructionDiscriminator', beet.u8]], 'InitializeGameInstructionArgs')
+export type InitializeGameInstructionArgs = {
+  initializeGameArgs: InitializeGameArgs
+}
+/**
+ * @category Instructions
+ * @category InitializeGame
+ * @category generated
+ */
+export const InitializeGameStruct = new beet.BeetArgsStruct<
+  InitializeGameInstructionArgs & {
+    instructionDiscriminator: number
+  }
+>(
+  [
+    ['instructionDiscriminator', beet.u8],
+    ['initializeGameArgs', initializeGameArgsBeet],
+  ],
+  'InitializeGameInstructionArgs'
+)
 /**
  * Accounts required by the _InitializeGame_ instruction
  *
@@ -37,16 +57,20 @@ export const initializeGameInstructionDiscriminator = 0
  * Creates a _InitializeGame_ instruction.
  *
  * @param accounts that will be accessed while the instruction is processed
+ * @param args to provide as instruction data to the program
+ *
  * @category Instructions
  * @category InitializeGame
  * @category generated
  */
 export function createInitializeGameInstruction(
   accounts: InitializeGameInstructionAccounts,
+  args: InitializeGameInstructionArgs,
   programId = new web3.PublicKey('Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS')
 ) {
   const [data] = InitializeGameStruct.serialize({
     instructionDiscriminator: initializeGameInstructionDiscriminator,
+    ...args,
   })
   const keys: web3.AccountMeta[] = [
     {
