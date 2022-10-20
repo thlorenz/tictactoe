@@ -12,6 +12,8 @@
     "pretest": "yarn build",
     "test": "tape dist/test/*.js",
     "t": "esr ./test/tictactoe.ts | tap-spec",
+    "amman:start": "DEBUG='amman:(info|error)' amman start",
+    "amman:stop": "amman stop",
     "api:gen": "solita"
   },
   "dependencies": {
