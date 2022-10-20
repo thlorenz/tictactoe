@@ -65,8 +65,10 @@ For example to checkout step **2** you'd do: `git switch 2 -c pr/2`.
 2. [setup SDK package](https://github.com/thlorenz/tictactoe/pull/2)
 3. [preparing SDK generation](https://github.com/thlorenz/tictactoe/pull/3)
 4. [generating IDL and TypeScript SDK](https://github.com/thlorenz/tictactoe/pull/4)
+5. [setup amman and added initialize game test](https://github.com/thlorenz/tictactoe/pull/5)
 6. [fix build](https://github.com/thlorenz/tictactoe/pull/6) (_you may skip that one_)
 7. [add init game functionality](https://github.com/thlorenz/tictactoe/pull/7)
+8. [amman account providers and renderers ](https://github.com/thlorenz/tictactoe/pull/8)
 
 ## Resources
 
