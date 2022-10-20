@@ -1,7 +1,7 @@
 import { LOCALHOST } from '@metaplex-foundation/amman-client'
 import { Connection, Transaction } from '@solana/web3.js'
-import { createInitializeGameInstruction } from 'src/generated'
-import { pdaForGame } from 'src/tictactoe'
+import { createInitializeGameInstruction } from '../src/generated'
+import { pdaForGame } from '../src/tictactoe'
 import test from 'tape'
 import { amman, killStuckProcess } from './utils'
 
