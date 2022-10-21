@@ -8,6 +8,7 @@ import {
   InitializeGameInstructionAccounts,
   InitializeGameInstructionArgs,
   PlayerJoinInstructionAccounts,
+  ShouldBeWaitingForOpponentError,
 } from '../src/generated'
 import { pdaForGame } from '../src/tictactoe'
 import test from 'tape'
@@ -162,6 +163,6 @@ test.only('tx: join game to add player o', async (t) => {
         [playerOPairTwo],
         'fail: joining game again'
       )
-      .assertError(t)
+      .assertError(t, ShouldBeWaitingForOpponentError)
   }
 })
