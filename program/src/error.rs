@@ -19,6 +19,9 @@ pub enum TictactoeError {
 
     #[error("Game account specified is invalid.")]
     InvalidGameAccount,
+
+    #[error("Game should be waiting for opponent")]
+    ShouldBeWaitingForOpponent,
 }
 
 // -----------------

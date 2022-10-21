@@ -12,7 +12,11 @@ pub enum TictactoeInstruction {
     #[account(name = "game_pda", mut, desc="The game PDA")]
     #[account(name = "system_program", desc="The system program")]
     InitializeGame(InitializeGameArgs),
+
+    #[account(name = "player_o", signer, desc = "The player joining the game")]
+    #[account(name = "game_pda", mut, desc="The game PDA")]
     PlayerJoin,
+
     PlayerMove(PlayerMove),
 }
 

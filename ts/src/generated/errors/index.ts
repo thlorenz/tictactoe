@@ -101,6 +101,32 @@ createErrorFromNameLookup.set(
 )
 
 /**
+ * ShouldBeWaitingForOpponent: 'Game should be waiting for opponent'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class ShouldBeWaitingForOpponentError extends Error {
+  readonly code: number = 0x71c7b0
+  readonly name: string = 'ShouldBeWaitingForOpponent'
+  constructor() {
+    super('Game should be waiting for opponent')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, ShouldBeWaitingForOpponentError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(
+  0x71c7b0,
+  () => new ShouldBeWaitingForOpponentError()
+)
+createErrorFromNameLookup.set(
+  'ShouldBeWaitingForOpponent',
+  () => new ShouldBeWaitingForOpponentError()
+)
+
+/**
  * Attempts to resolve a custom program error from the provided error code.
  * @category Errors
  * @category generated

@@ -1,6 +1,7 @@
 use borsh::{BorshDeserialize, BorshSerialize};
 use solana_program::{
     account_info::{next_account_info, AccountInfo},
+    borsh::try_from_slice_unchecked,
     entrypoint::ProgramResult,
     msg,
     pubkey::Pubkey,
@@ -8,8 +9,9 @@ use solana_program::{
 
 use crate::{
     assert_game_key_matches_account, assert_signer,
-    create_account_owned_by_program, get_game_pda, Game, InitializeGameArgs,
-    PlayerMove, TictactoeInstruction, GAME_SIZE, TICTACTOE_PREFIX,
+    assert_waiting_for_opponent, create_account_owned_by_program, get_game_pda,
+    Game, GameState, InitializeGameArgs, PlayerMove, TictactoeInstruction,
+    GAME_SIZE, TICTACTOE_PREFIX,
 };
 
 pub fn process(
@@ -65,6 +67,25 @@ pub fn initialize_game(
 
 pub fn player_join(accounts: &[AccountInfo]) -> ProgramResult {
     msg!("IX: player_join, passed {} accounts", accounts.len());
+    // 1. Extract accounts
+    let account_info_iter = &mut accounts.iter();
+    let player_info = next_account_info(account_info_iter)?;
+    let game_pda_info = next_account_info(account_info_iter)?;
+
+    // 2. Check that the accounts conform to the requirements
+    assert_signer(player_info)?;
+
+    let mut game: Game =
+        try_from_slice_unchecked(&game_pda_info.try_borrow_data()?)?;
+    assert_waiting_for_opponent(&game)?;
+
+    // 3. Update game state
+    game.player_o = *player_info.key;
+    game.state = GameState::Full;
+
+    // 4 Save game state
+    game.serialize(&mut &mut game_pda_info.try_borrow_mut_data()?.as_mut())?;
+
     Ok(())
 }
 

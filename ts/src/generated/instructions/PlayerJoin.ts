@@ -16,23 +16,49 @@ import * as web3 from '@solana/web3.js'
 export const PlayerJoinStruct = new beet.BeetArgsStruct<{
   instructionDiscriminator: number
 }>([['instructionDiscriminator', beet.u8]], 'PlayerJoinInstructionArgs')
+/**
+ * Accounts required by the _PlayerJoin_ instruction
+ *
+ * @property [**signer**] playerO The player joining the game
+ * @property [_writable_] gamePda The game PDA
+ * @category Instructions
+ * @category PlayerJoin
+ * @category generated
+ */
+export type PlayerJoinInstructionAccounts = {
+  playerO: web3.PublicKey
+  gamePda: web3.PublicKey
+}
 
 export const playerJoinInstructionDiscriminator = 1
 
 /**
  * Creates a _PlayerJoin_ instruction.
  *
+ * @param accounts that will be accessed while the instruction is processed
  * @category Instructions
  * @category PlayerJoin
  * @category generated
  */
 export function createPlayerJoinInstruction(
+  accounts: PlayerJoinInstructionAccounts,
   programId = new web3.PublicKey('Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS')
 ) {
   const [data] = PlayerJoinStruct.serialize({
     instructionDiscriminator: playerJoinInstructionDiscriminator,
   })
-  const keys: web3.AccountMeta[] = []
+  const keys: web3.AccountMeta[] = [
+    {
+      pubkey: accounts.playerO,
+      isWritable: false,
+      isSigner: true,
+    },
+    {
+      pubkey: accounts.gamePda,
+      isWritable: true,
+      isSigner: false,
+    },
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
