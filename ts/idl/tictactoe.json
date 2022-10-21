@@ -39,7 +39,20 @@
     },
     {
       "name": "PlayerJoin",
-      "accounts": [],
+      "accounts": [
+        {
+          "name": "playerO",
+          "isMut": false,
+          "isSigner": true,
+          "desc": "The player joining the game"
+        },
+        {
+          "name": "gamePda",
+          "isMut": true,
+          "isSigner": false,
+          "desc": "The game PDA"
+        }
+      ],
       "args": [],
       "discriminant": {
         "type": "u8",
@@ -186,6 +199,11 @@
       "code": 7456687,
       "name": "InvalidGameAccount",
       "msg": "Game account specified is invalid."
+    },
+    {
+      "code": 7456688,
+      "name": "ShouldBeWaitingForOpponent",
+      "msg": "Game should be waiting for opponent"
     }
   ],
   "metadata": {
