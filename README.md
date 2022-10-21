@@ -68,7 +68,8 @@ For example to checkout step **2** you'd do: `git switch 2 -c pr/2`.
 5. [setup amman and added initialize game test](https://github.com/thlorenz/tictactoe/pull/5)
 6. [fix build](https://github.com/thlorenz/tictactoe/pull/6) (_you may skip that one_)
 7. [add init game functionality](https://github.com/thlorenz/tictactoe/pull/7)
-8. [amman account providers and renderers ](https://github.com/thlorenz/tictactoe/pull/8)
+8. [amman account providers and renderers](https://github.com/thlorenz/tictactoe/pull/8)
+9. [implement join player instruction](https://github.com/thlorenz/tictactoe/pull/9)
 
 ## Resources
 
