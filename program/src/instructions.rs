@@ -4,9 +4,7 @@ use solana_program::{
     account_info::AccountInfo, program_error::ProgramError, pubkey::Pubkey,
 };
 
-use crate::{
-    Game, Player, TictactoeError, BOARD_ITEM_FREE, BOARD_ITEM_O, BOARD_ITEM_X,
-};
+use crate::{Game, Player, TictactoeError, BOARD_ITEM_FREE};
 
 // -----------------
 // Instruction
@@ -41,8 +39,8 @@ pub struct InitializeGameArgs {
 // -----------------
 #[derive(BorshSerialize, BorshDeserialize, Clone, Copy)]
 pub enum MoveKind {
-    X = BOARD_ITEM_X as isize,
-    O = BOARD_ITEM_O as isize,
+    X = 1, /* BOARD_ITEM_X */
+    O = 2, /* BOARD_ITEM_O */
 }
 #[derive(BorshDeserialize)]
 pub struct PlayerMove {
