@@ -33,12 +33,26 @@ export const PlayerMoveStruct = new beet.BeetArgsStruct<
   ],
   'PlayerMoveInstructionArgs'
 )
+/**
+ * Accounts required by the _PlayerMove_ instruction
+ *
+ * @property [**signer**] player The player making the move
+ * @property [_writable_] gamePda The game PDA
+ * @category Instructions
+ * @category PlayerMove
+ * @category generated
+ */
+export type PlayerMoveInstructionAccounts = {
+  player: web3.PublicKey
+  gamePda: web3.PublicKey
+}
 
 export const playerMoveInstructionDiscriminator = 2
 
 /**
  * Creates a _PlayerMove_ instruction.
  *
+ * @param accounts that will be accessed while the instruction is processed
  * @param args to provide as instruction data to the program
  *
  * @category Instructions
@@ -46,6 +60,7 @@ export const playerMoveInstructionDiscriminator = 2
  * @category generated
  */
 export function createPlayerMoveInstruction(
+  accounts: PlayerMoveInstructionAccounts,
   args: PlayerMoveInstructionArgs,
   programId = new web3.PublicKey('Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS')
 ) {
@@ -53,7 +68,18 @@ export function createPlayerMoveInstruction(
     instructionDiscriminator: playerMoveInstructionDiscriminator,
     ...args,
   })
-  const keys: web3.AccountMeta[] = []
+  const keys: web3.AccountMeta[] = [
+    {
+      pubkey: accounts.player,
+      isWritable: false,
+      isSigner: true,
+    },
+    {
+      pubkey: accounts.gamePda,
+      isWritable: true,
+      isSigner: false,
+    },
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,

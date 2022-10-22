@@ -61,7 +61,20 @@
     },
     {
       "name": "PlayerMove",
-      "accounts": [],
+      "accounts": [
+        {
+          "name": "player",
+          "isMut": false,
+          "isSigner": true,
+          "desc": "The player making the move"
+        },
+        {
+          "name": "gamePda",
+          "isMut": true,
+          "isSigner": false,
+          "desc": "The game PDA"
+        }
+      ],
       "args": [
         {
           "name": "playerMove",
@@ -135,7 +148,9 @@
         "fields": [
           {
             "name": "xOrO",
-            "type": "u8"
+            "type": {
+              "defined": "MoveKind"
+            }
           },
           {
             "name": "field",
@@ -177,6 +192,20 @@
           }
         ]
       }
+    },
+    {
+      "name": "MoveKind",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "X"
+          },
+          {
+            "name": "O"
+          }
+        ]
+      }
     }
   ],
   "errors": [
@@ -204,6 +233,16 @@
       "code": 7456688,
       "name": "ShouldBeWaitingForOpponent",
       "msg": "Game should be waiting for opponent"
+    },
+    {
+      "code": 7456689,
+      "name": "IllegalMove",
+      "msg": "Illegal move"
+    },
+    {
+      "code": 7456690,
+      "name": "OutOfTurnMove",
+      "msg": "Player attempting to move out of turn"
     }
   ],
   "metadata": {

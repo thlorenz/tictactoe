@@ -127,6 +127,46 @@ createErrorFromNameLookup.set(
 )
 
 /**
+ * IllegalMove: 'Illegal move'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class IllegalMoveError extends Error {
+  readonly code: number = 0x71c7b1
+  readonly name: string = 'IllegalMove'
+  constructor() {
+    super('Illegal move')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, IllegalMoveError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(0x71c7b1, () => new IllegalMoveError())
+createErrorFromNameLookup.set('IllegalMove', () => new IllegalMoveError())
+
+/**
+ * OutOfTurnMove: 'Player attempting to move out of turn'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class OutOfTurnMoveError extends Error {
+  readonly code: number = 0x71c7b2
+  readonly name: string = 'OutOfTurnMove'
+  constructor() {
+    super('Player attempting to move out of turn')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, OutOfTurnMoveError)
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(0x71c7b2, () => new OutOfTurnMoveError())
+createErrorFromNameLookup.set('OutOfTurnMove', () => new OutOfTurnMoveError())
+
+/**
  * Attempts to resolve a custom program error from the provided error code.
  * @category Errors
  * @category generated

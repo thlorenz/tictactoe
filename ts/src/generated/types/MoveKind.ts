@@ -6,20 +6,19 @@
  */
 
 import * as beet from '@metaplex-foundation/beet'
-import { MoveKind, moveKindBeet } from './MoveKind'
-export type PlayerMove = {
-  xOrO: MoveKind
-  field: number
+/**
+ * @category enums
+ * @category generated
+ */
+export enum MoveKind {
+  X,
+  O,
 }
 
 /**
  * @category userTypes
  * @category generated
  */
-export const playerMoveBeet = new beet.BeetArgsStruct<PlayerMove>(
-  [
-    ['xOrO', moveKindBeet],
-    ['field', beet.u8],
-  ],
-  'PlayerMove'
-)
+export const moveKindBeet = beet.fixedScalarEnum(
+  MoveKind
+) as beet.FixedSizeBeet<MoveKind, MoveKind>
