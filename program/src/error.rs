@@ -26,7 +26,7 @@ pub enum TictactoeError {
     #[error("Illegal move")]
     IllegalMove,
 
-    #[error("Player attemting to move out of turn")]
+    #[error("Player attempting to move out of turn")]
     OutOfTurnMove,
 }
 
