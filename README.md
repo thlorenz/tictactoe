@@ -63,6 +63,7 @@ cd ts && yarn test
 8. [amman account providers and renderers](https://github.com/thlorenz/tictactoe/pull/8)
 9. [implement join player instruction](https://github.com/thlorenz/tictactoe/pull/9)
 10. [resolving errors with cusper](https://github.com/thlorenz/tictactoe/pull/10)
+11. [implement and test move instruction](https://github.com/thlorenz/tictactoe/pull/11)
 
 **NOTE**: 
 

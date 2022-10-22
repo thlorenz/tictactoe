@@ -83,7 +83,7 @@ pub fn player_join(accounts: &[AccountInfo]) -> ProgramResult {
     game.player_o = *player_info.key;
     game.state = GameState::Full;
 
-    // 4 Save game state
+    // 4. Save game state
     game.serialize(&mut &mut game_pda_info.try_borrow_mut_data()?.as_mut())?;
 
     Ok(())
@@ -91,8 +91,22 @@ pub fn player_join(accounts: &[AccountInfo]) -> ProgramResult {
 
 pub fn player_move(
     accounts: &[AccountInfo],
-    _player_move: PlayerMove,
+    player_move: PlayerMove,
 ) -> ProgramResult {
     msg!("IX: player_move, passed {} accounts", accounts.len());
+
+    // 1. Extract accounts
+    let account_info_iter = &mut accounts.iter();
+    let player_info = next_account_info(account_info_iter)?;
+    let game_info = &mut next_account_info(account_info_iter)?;
+    let mut game: Game =
+        try_from_slice_unchecked(&game_info.try_borrow_data()?)?;
+
+    // 2. Use PlayerMove methods to verify and process the desired move
+    player_move.process(player_info, &mut game)?;
+
+    // 4. Save game state
+    game.serialize(&mut &mut game_info.try_borrow_mut_data()?.as_mut())?;
+
     Ok(())
 }

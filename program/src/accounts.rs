@@ -17,6 +17,10 @@ pub enum Player {
     PlayerO,
 }
 
+pub const BOARD_ITEM_FREE: u8 = 0;
+pub const BOARD_ITEM_X: u8 = 1;
+pub const BOARD_ITEM_O: u8 = 2;
+
 #[rustfmt::skip]
 pub const GAME_SIZE: usize = 
     /* player_x       */ 32 + 
@@ -61,5 +65,15 @@ impl Game {
             PlayerX => self.player_to_move = PlayerO,
             PlayerO => self.player_to_move = PlayerX,
         };
+    }
+
+    pub fn update_state(self: &mut Game) {
+        // TODO: add an if branch here that determines if there is a winner and
+        //       updates a property on the game account, i.e. `winner: Option<Player>`.
+        if self.board.iter().all(|&p| p != BOARD_ITEM_FREE) {
+            self.state = GameState::Finished;
+        } else {
+            self.toggle_player_to_move();
+        }
     }
 }

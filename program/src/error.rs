@@ -22,6 +22,12 @@ pub enum TictactoeError {
 
     #[error("Game should be waiting for opponent")]
     ShouldBeWaitingForOpponent,
+
+    #[error("Illegal move")]
+    IllegalMove,
+
+    #[error("Player attempting to move out of turn")]
+    OutOfTurnMove,
 }
 
 // -----------------
