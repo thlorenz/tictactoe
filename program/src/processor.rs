@@ -9,9 +9,8 @@ use solana_program::{
 
 use crate::{
     assert_game_key_matches_account, assert_signer,
-    assert_waiting_for_opponent, create_account_owned_by_program, get_game_pda,
-    Game, GameState, InitializeGameArgs, PlayerMove, TictactoeInstruction,
-    GAME_SIZE, TICTACTOE_PREFIX,
+    assert_waiting_for_opponent, create_account_owned_by_program, id, Game,
+    GameState, InitializeGameArgs, PlayerMove, TictactoeInstruction, GAME_SIZE,
 };
 
 pub fn process(
@@ -44,17 +43,18 @@ pub fn initialize_game(
     // 2. Check that the accounts conform to the requirements
     assert_signer(player_info)?;
 
-    let (game_pda, bump) = get_game_pda(&args.game);
+    let (game_pda, bump) = Game::shank_pda(&id(), &args.game);
     assert_game_key_matches_account(&game_pda, game_pda_info)?;
 
     // 3. Create the game account
-    let seeds = &[TICTACTOE_PREFIX.as_bytes(), args.game.as_ref(), &[bump]];
+    let bump = &[bump];
+    let seeds = Game::shank_seeds_with_bump(&args.game, bump);
     create_account_owned_by_program(
         player_info,
         game_pda_info,
         system_info,
         program_id,
-        seeds,
+        &seeds,
         GAME_SIZE,
     )?;
 

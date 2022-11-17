@@ -9,20 +9,7 @@ use solana_program::{
     sysvar::Sysvar,
 };
 
-use crate::{id, TictactoeError, TICTACTOE_PREFIX};
-
-// -----------------
-// Game PDA
-// -----------------
-// This method derives a program derived address (PDA) for a game.
-// It needs to match the similarly named function in our SDK.
-// This won't be necessary in the future as shank + solita will generated it eventually.
-pub fn get_game_pda(game: &Pubkey) -> (Pubkey, u8) {
-    let program_id = id();
-    let seeds = [TICTACTOE_PREFIX.as_bytes(), game.as_ref()];
-    let (pda, bump) = Pubkey::find_program_address(&seeds, &program_id);
-    (pda, bump)
-}
+use crate::TictactoeError;
 
 // -----------------
 // Create Account
