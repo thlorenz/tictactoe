@@ -30,6 +30,7 @@ pub const GAME_SIZE: usize =
     /* player_to_move */ 1;
 
 #[derive(Debug, BorshSerialize, BorshDeserialize, ShankAccount)]
+#[seeds("tictactoe", game("The key of the game"))]
 pub struct Game {
     pub player_x: Pubkey,
     pub player_o: Pubkey,
