@@ -3,7 +3,7 @@
 A [TicTacToe](https://en.wikipedia.org/wiki/Tic-tac-toe) game that runs on the
 [Solana](https://solana.com/) blockchain.
 
-It is built using the _MetaStack_ consisting of the following tools:
+It is built using the _IronStack_ consisting of the following tools:
 
 - [shank](https://github.com/metaplex-foundation/shank) which extracts IDL data from the Rust
   program
